@@ -1,0 +1,26 @@
+{
+  "gateway": {
+    "model": "models/gateway/ecod_model.joblib",
+    "metadata": "models/gateway/metadata.json"
+  },
+  "iot_sensor": {
+    "model": "models/iot_sensor/ecod_model.joblib",
+    "metadata": "models/iot_sensor/metadata.json"
+  },
+  "auth_server": {
+    "model": "models/auth_server/ecod_model.joblib",
+    "metadata": "models/auth_server/metadata.json"
+  },
+  "web_server": {
+    "model": "models/web_server/ecod_model.joblib",
+    "metadata": "models/web_server/metadata.json"
+  },
+  "smart_camera": {
+    "model": "models/smart_camera/ecod_model.joblib",
+    "metadata": "models/smart_camera/metadata.json"
+  },
+  "smart_plug": {
+    "model": "models/smart_plug/ecod_model.joblib",
+    "metadata": "models/smart_plug/metadata.json"
+  }
+}

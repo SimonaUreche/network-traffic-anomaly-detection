@@ -1,0 +1,73 @@
+# ── Python ──────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── Date sensibile / secrete ─────────────────────────────────────────
+keys/
+*.pem
+*.key
+*.crt
+*.env
+.env*
+!.env.example
+
+# ── Modele ML antrenate (fișiere mari) ───────────────────────────────
+models/*/ecod_model.joblib
+# Păstrăm metadata.json și registry.json (mici, utile pentru reproductibilitate)
+
+# ── Date de captură (fișiere mari) ───────────────────────────────────
+pcap/
+data/normal/
+data/attacks/
+
+# ── Incidente generate la runtime ────────────────────────────────────
+incidents/INC-*.json
+incidents/pcaps/
+# Păstrăm istoric_blocari.json dacă vrei să-l versionezi
+# incidents/istoric_blocari.json
+
+# ── Baze de date ─────────────────────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── LLM / AI local cache ─────────────────────────────────────────────
+llm/
+*.gguf
+*.bin
+
+# ── Build C extractor ────────────────────────────────────────────────
+extractor/build/CMakeFiles/
+extractor/build/CMakeCache.txt
+extractor/build/cmake_install.cmake
+extractor/build/Makefile
+extractor/build/extractor
+
+# ── React / Node ─────────────────────────────────────────────────────
+dashboard-ui/node_modules/
+dashboard-ui/dist/
+
+# ── macOS ────────────────────────────────────────────────────────────
+.DS_Store
+**/.DS_Store
+
+# ── IDE ──────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Frontend screenshots (nu e cod) ──────────────────────────────────
+frontend_photo/

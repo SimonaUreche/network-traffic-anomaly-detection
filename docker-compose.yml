@@ -1,0 +1,154 @@
+networks:
+  iot_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/24
+
+services:
+
+  # ==================== REȚEA IoT ====================
+  dns_server:
+    build: ./docker/dns_server
+    container_name: dns_server
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.53
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    ports:
+      - "5454:53/udp"
+      - "5454:53/tcp"
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  gateway:
+    build: ./docker/gateway
+    container_name: gateway
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.2
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "1883:1883"
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  web_server:
+    build: ./docker/web_server
+    container_name: web_server
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.3
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    ports:
+      - "8080:80"
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  iot_sensor:
+    build: ./docker/iot_sensor
+    container_name: iot_sensor
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.4
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  smart_camera:
+    build: ./docker/smart_camera
+    container_name: smart_camera
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.6
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    ports:
+      - "9006:80"
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  smart_plug:
+    build: ./docker/smart_plug
+    container_name: smart_plug
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.7
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  auth_server:
+    build: ./docker/auth_server
+    container_name: auth_server
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.5
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    ports:
+      - "2222:22"
+    volumes:
+      - ./pcap/normal:/pcap/normal
+    restart: unless-stopped
+
+  external_attacker:
+    build:
+      context: ./docker/external_attacker
+      dockerfile: Dockerfile
+    container_name: external_attacker
+    networks:
+      iot_network:
+        ipv4_address: 172.20.0.99
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+      - NET_BIND_SERVICE
+    restart: unless-stopped
+    tty: true
+
+  # ==================== DASHBOARD (UI + API) ====================
+  api:
+    image: python:3.11-slim
+    container_name: api
+    working_dir: /app
+    volumes:
+      - ./:/app
+    command: >
+      sh -lc "pip install --no-cache-dir -r requirements.txt &&
+              uvicorn api_server:app --host 0.0.0.0 --port 8000"
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+  dashboard:
+    image: node:18-alpine
+    container_name: dashboard
+    working_dir: /app/dashboard
+    volumes:
+      - ./dashboard:/app/dashboard
+    command: >
+      sh -lc "npm install &&
+              npm run dev -- --host 0.0.0.0 --port 5173"
+    environment:
+      - VITE_API_BASE=http://localhost:8000
+    ports:
+      - "5173:5173"
+    restart: unless-stopped

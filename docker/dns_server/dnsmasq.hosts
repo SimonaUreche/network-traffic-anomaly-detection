@@ -1,0 +1,6 @@
+172.20.0.2 gateway gateway.iot.lab
+172.20.0.3 web_server web_server.iot.lab
+172.20.0.4 iot_sensor iot_sensor.iot.lab
+172.20.0.5 auth_server auth_server.iot.lab
+172.20.0.10 traffic_controller traffic_controller.iot.lab
+172.20.0.53 dns_server dns_server.iot.lab

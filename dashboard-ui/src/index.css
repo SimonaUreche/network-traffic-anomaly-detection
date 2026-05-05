@@ -1,0 +1,87 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:       #0a0b0f;
+  --bg2:      #0f1016;
+  --card:     #13141b;
+  --card2:    #1a1b25;
+  --border:   #22243a;
+  --border2:  #2a2d45;
+  --gold:     #d4a520;
+  --gold-dim: #a07810;
+  --green:    #22c55e;
+  --red:      #ef4444;
+  --orange:   #f59e0b;
+  --blue:     #3b82f6;
+  --teal:     #14b8a6;
+  --purple:   #a855f7;
+  --text:     #e2e4f0;
+  --text2:    #8b8fa8;
+  --text3:    #5a5d75;
+}
+
+html, body, #root { height: 100%; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background:
+    radial-gradient(900px 500px at 20% 0%, rgba(212,165,32,.18), transparent 60%),
+    radial-gradient(700px 420px at 85% 10%, rgba(96,165,250,.10), transparent 55%),
+    radial-gradient(1000px 700px at 50% 120%, rgba(20,184,166,.06), transparent 55%),
+    linear-gradient(180deg, #07080c 0%, var(--bg) 40%, #07080c 100%);
+  color: var(--text);
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 4px; }
+
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input  { font-family: inherit; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 3px;
+  padding: 2px 7px; border-radius: 4px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+}
+.badge-HIGH     { background: rgba(239,68,68,.18);  color:#ef4444; border:1px solid rgba(239,68,68,.35); }
+.badge-MEDIUM   { background: rgba(245,158,11,.15); color:#f59e0b; border:1px solid rgba(245,158,11,.35); }
+.badge-LOW      { background: rgba(59,130,246,.15); color:#60a5fa; border:1px solid rgba(59,130,246,.35); }
+/* Jurnal / doar log — albastru (asociere tipică audit & logging) */
+.badge-LOG_ONLY { background: rgba(56,189,248,.12); color:#38bdf8; border:1px solid rgba(56,189,248,.38); }
+
+.status-online   { background:rgba(34,197,94,.15);  color:#22c55e; border:1px solid rgba(34,197,94,.35);  padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+/* Host care apare ca țintă în incidente — portocaliu, nu roșu (roșu rămâne pentru atacator / blocare) */
+.status-alert    { background:rgba(249,115,22,.14);  color:#fb923c; border:1px solid rgba(249,115,22,.4);  padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+/* Sursă de atac (ex. host extern) când încă e „online” din punct de vedere al conexiunii */
+.status-attacker { background:rgba(239,68,68,.16);  color:#f87171; border:1px solid rgba(239,68,68,.42);  padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+.status-warning  { background:rgba(245,158,11,.15); color:#f59e0b; border:1px solid rgba(245,158,11,.35); padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+.status-blocked  { background:rgba(239,68,68,.2);   color:#f87171; border:1px solid rgba(239,68,68,.4);   padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+.status-isolated { background:rgba(168,85,247,.18); color:#c084fc; border:1px solid rgba(168,85,247,.35); padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+.status-offline  { background:rgba(90,93,117,.15);  color:#6b7280; border:1px solid rgba(90,93,117,.3);   padding:2px 8px; border-radius:4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
+
+.card {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)) ,
+    var(--card);
+  border: 1px solid rgba(42,45,69,.75);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.25) inset,
+    0 18px 50px rgba(0,0,0,.55);
+}
+
+/* Umple zona sub navbar (App: main are flex:1 + min-height:0); un singur scroll pe pagină */
+.page {
+  padding: 20px 24px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+/* Slightly tighter spacing on smaller screens */
+@media (max-width: 1100px) {
+  .page { padding: 16px 16px; }
+}
