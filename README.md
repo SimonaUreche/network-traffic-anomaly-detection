@@ -1,8 +1,8 @@
-# 🛡️ IoT IDPS — Intrusion Detection & Prevention System for IoT Networks
+# IoT IDPS — Intrusion Detection & Prevention System for IoT Networks
 
 > **Lucrare de licență** — Sistem de detecție și prevenție a intruziunilor în rețele IoT, cu răspuns automat și analiză AI în timp real.
 
-![Dashboard Overview](docs/screenshots/dashboard-overview.png)
+<img width="3418" height="1738" alt="image" src="https://github.com/user-attachments/assets/ce8c1eef-f610-4990-b687-c87b6b369956" />
 
 ---
 
@@ -21,7 +21,7 @@ Sistem complet de securitate pentru rețele IoT care detectează anomalii în tr
 
 ---
 
-## 🏗️ Arhitectură
+## Arhitectură
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -52,7 +52,7 @@ Sistem complet de securitate pentru rețele IoT care detectează anomalii în tr
 
 ---
 
-## 📸 Interfață
+## Interfață
 
 ### Dashboard — Topologie rețea + Amenințări active
 <img width="3418" height="1738" alt="image" src="https://github.com/user-attachments/assets/ce8c1eef-f610-4990-b687-c87b6b369956" />
@@ -65,7 +65,7 @@ Sistem complet de securitate pentru rețele IoT care detectează anomalii în tr
 
 ---
 
-## 🔧 Stack tehnologic
+## Stack tehnologic
 
 | Componentă | Tehnologie |
 |---|---|
@@ -81,7 +81,7 @@ Sistem complet de securitate pentru rețele IoT care detectează anomalii în tr
 
 ---
 
-## 🚀 Instalare și rulare
+## Instalare și rulare
 
 ### Prerequisite
 
@@ -149,7 +149,7 @@ docker exec external_attacker bash -c 'ab -n 200 -c 10 http://172.20.0.3:80/'
 
 ---
 
-## 📊 Atacuri testate
+## Atacuri testate
 
 | # | Atac | Sursă | Țintă | Detecție | Răspuns | AI |
 |---|---|---|---|---|---|---|
@@ -162,7 +162,7 @@ docker exec external_attacker bash -c 'ab -n 200 -c 10 http://172.20.0.3:80/'
 
 ---
 
-## 🧠 Flow detecție și răspuns
+## Flow detecție și răspuns
 
 ```
 Trafic rețea (tcpdump, 10s/fereastră)
@@ -191,7 +191,7 @@ ECOD Scoring (scor anomalie per flux)
 
 ---
 
-## 📁 Structura proiectului
+## Structura proiectului
 
 ```
 thesis-project/
@@ -234,7 +234,7 @@ thesis-project/
 
 ---
 
-## 🔑 Configurare API Keys
+## Configurare API Keys
 
 Sistemul necesită chei API pentru:
 
@@ -251,7 +251,7 @@ ABUSEIPDB_KEY = "..."
 
 ---
 
-## 📚 Referințe
+## Referințe
 
 - **ECOD** — Li, Z. et al. (2022). *ECOD: Unsupervised Outlier Detection Using Empirical Cumulative Distribution Functions*. IEEE TKDE.
 - **MITRE ATT&CK** — Framework de clasificare atacuri (T1110, T1046, T1499, T1190)
@@ -259,15 +259,3 @@ ABUSEIPDB_KEY = "..."
 - **Suricata / Snort** — Referință pentru connection tracking stateful
 
 ---
-
-## 👩‍💻 Autor
-
-**Simona Ureche** — Universitatea Tehnică, Facultatea de Automatică și Calculatoare
-
-Lucrare de licență, 2026
-
----
-
-## 📄 Licență
-
-Acest proiect este dezvoltat exclusiv în scop academic, ca parte a lucrării de licență.
