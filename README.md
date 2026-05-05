@@ -6,7 +6,7 @@
 
 ---
 
-## 📋 Descriere
+## Descriere
 
 Sistem complet de securitate pentru rețele IoT care detectează anomalii în traficul de rețea folosind algoritmi de machine learning nesupervizat, aplică răspuns automat gradual (rate-limit, DROP, izolare), și analizează atacurile cu un agent AI bazat pe LLM.
 
